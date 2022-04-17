@@ -49,8 +49,6 @@ var HOME_PAGE_MAX_HOUSES int = 5
 //房屋列表页面每页显示条目数
 var HOUSE_LIST_PAGE_CAPACITY int = 2
 
-
-
 /* 区域信息 table_name = area */
 type Area struct {
 	Id     int      `json:"aid"`                        //区域编号
@@ -97,13 +95,13 @@ type OrderHouse struct {
 	Ctime       time.Time `orm:"auto_now_add;type(datetime)" json:"ctime"`
 }
 
-func init(){
+func init() {
 
 	// set default database
 	orm.RegisterDataBase("default", "mysql", "root:qweasdzxc123@tcp(127.0.0.1:3306)/lovehome2?charset=utf8", 30)
 
 	// register model
-	orm.RegisterModel(new(User),new(OrderHouse),new(Facility),new(HouseImage),new(Area),new(House))
+	orm.RegisterModel(new(User), new(OrderHouse), new(Facility), new(HouseImage), new(Area), new(House))
 
 	// create table
 	orm.RunSyncdb("default", false, true)
